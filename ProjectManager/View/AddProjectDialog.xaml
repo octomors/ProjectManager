@@ -1,0 +1,136 @@
+﻿<Window x:Class="ProjectManager.View.AddProjectDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectManager.View"
+        mc:Ignorable="d"
+        Title="Добавление проекта"
+        Height="400" Width="600"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="NameTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="RawNameTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Foreground" Value="#404040"/>
+        </Style>
+        
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--#region Подписи-->
+        <StackPanel Grid.Row="0"
+                    VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource NameTextBlockStyle}"
+                       Text="Название проекта"/>
+            <TextBlock Style="{StaticResource RawNameTextBlockStyle}" 
+                       Text="(Proj_Short)"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource NameTextBlockStyle}"
+                       Text="ID метода"/>
+            <TextBlock Style="{StaticResource RawNameTextBlockStyle}"
+                       Text="(Method_No)"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="2"
+                    VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource NameTextBlockStyle}"
+                       Text="Директория проекта"/>
+            <TextBlock Style="{StaticResource RawNameTextBlockStyle}"
+                       Text="(FDB_Dir)"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3"
+                    VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource NameTextBlockStyle}"
+                       Text="Папка с базой данных"/>
+            <TextBlock Style="{StaticResource RawNameTextBlockStyle}"
+                       Text="(DB_Dir)"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4"
+                    VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource NameTextBlockStyle}"
+                       Text="Файл базы данных"/>
+            <TextBlock Style="{StaticResource RawNameTextBlockStyle}"
+                       Text="(DB_File)"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource NameTextBlockStyle}"
+                       Text="Алиас"/>
+            <TextBlock Style="{StaticResource RawNameTextBlockStyle}"
+                       Text="(Proj_Alias)"/>
+        </StackPanel>
+        <!--#endregion-->
+        
+        <!--#region TextBox'ы-->
+        <TextBox Grid.Column="1" Grid.Row="0"
+                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                 Height="30"
+                 Margin="5,0,5,0"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="1"
+                 Text="{Binding MethodID, UpdateSourceTrigger=PropertyChanged}"
+                 Height="30"
+                 Margin="5,0,5,0"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="2"
+                 Text="{Binding Directory, UpdateSourceTrigger=PropertyChanged}"
+                 Height="30"
+                 Margin="5,0,5,0"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="3"
+                 Text="{Binding DBFolder, UpdateSourceTrigger=PropertyChanged}"
+                 Height="30"
+                 Margin="5,0,5,0"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="4"
+                 Text="{Binding DBFile, UpdateSourceTrigger=PropertyChanged}"
+                 Height="30"
+                 Margin="5,0,5,0"/>
+        
+        <TextBox Grid.Column="1" Grid.Row="5"
+                 Text="{Binding Alias, UpdateSourceTrigger=PropertyChanged}"
+                 Height="30"
+                 Margin="5,0,5,0"/>
+        <!--#endregion-->
+
+        <StackPanel Grid.Row ="6" Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button Command="{Binding AddCommand}"
+                    Content="Добавить"
+                    Height="30"
+                    Width="70"/>
+            <Button Command="{Binding CancelCommand}"
+                    Content="Отмена"
+                    Height="30"
+                    Width="70"
+                    Margin="60,0,0,0"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
